@@ -82,13 +82,13 @@
             <div class="select-box">
 
              
-              <div class="language">
-                <select name="#" id="language">
-                  <option value="en">English</option>
-                  <option value="ta">Tamil</option>
-                </select>
-              </div>
-
+                   <div class="language">
+                        <!-- Language Selector -->
+                        <select id="languageSelect" onchange="changeLanguage()">
+                        <option value="en" >English</option>
+                        <option value="ta" selected>தமிழ்</option>
+                        </select>
+                    </div>
 
 
 
@@ -1109,25 +1109,17 @@
   <script src="js/splitType.js"></script>
   <script src="js/script-gsap.js"></script>
   <script src="js/script.js"></script>
-  <script>
-    const languageSelect = document.getElementById('language');
-    const currentPage = window.location.pathname.split('/').pop();
+<script>
+function changeLanguage() {
+  let lang = document.getElementById("languageSelect").value;
 
-    if(currentPage.includes('-ta')) {
-      languageSelect.value = 'ta';
-    } else {
-      languageSelect.value = 'en';
-    }
-
-    languageSelect.addEventListener('change', function() {
-      const pageName = currentPage.replace('-ta', '').replace('.html', '');
-      if(this.value === 'ta') {
-        window.location.href = pageName + '-ta.html';
-      } else {
-        window.location.href = pageName + '.html';
-      }
-    });
-  </script>
+  if (lang === "en") {
+    window.location.href = "index.html";   // English version
+  } else if (lang === "ta") {
+    window.location.href = "index-ta.html"; // Tamil version
+  }
+}
+</script>
   
 </body>
 
